@@ -1,0 +1,201 @@
+@import url(https://fonts.googleapis.com/css?family=Alegreya+Sans+SC);
+
+$headings-font-family:         'Alegreya Sans SC', sans-serif;
+$enable-responsive-font-sizes: true;
+$rfs-base-font-size:           1rem;
+$font-weight-light:            200;
+$font-weight-normal:           300;
+$font-weight-bold:             500;
+$body-bg:                      #000;
+$body-color:                   #fff;
+$theme-colors: (
+  "primary": #abf,
+);
+
+@import "bootstrap/functions";
+@import "bootstrap/variables";
+@import "bootstrap/mixins";
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/grid";
+@import "bootstrap/utilities";
+@import "bootstrap/pagination";
+
+@import "banners"; 
+@import "code-expander";
+@import "logo"; 
+@import "icon"; 
+@import "scroll-down-indicator";
+@import "pagination";
+
+
+// typography --------------------------------------------------------------------------------------
+
+.alegreya {
+  font-family: 'Alegreya Sans SC', sans-serif;
+}
+
+// base layout -------------------------------------------------------------------------------------
+
+body {
+  font-weight: 300;
+  text-shadow: 1px 1px 2px #000;
+  background: black;
+  background: url(/assets/img/background.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  box-shadow: inset 0 0 30px black, inset 0 0 100px black;
+  min-height: 100vh;
+}
+
+#background {
+  background: url(/assets/img/dark.png);
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+nav {
+  padding-top: 30px;
+  @include font-size($font-size-base * 1.75);
+}
+
+main {
+  background: url(/assets/img/body.png);
+  padding: 20px 0;
+  margin: 20px 0;
+}
+
+footer {
+  @include font-size($font-size-sm);
+  padding-bottom: 50px;
+
+  i {
+    padding: 20px;
+  }
+}
+
+.fullpage-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.description {
+  margin: 30vh 0;
+  @include font-size($font-size-lg);
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  position: relative;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: lighten($link-color, 20);
+    text-shadow: 0 0 2px #fff;
+    text-decoration: none;
+    outline: none;
+  }
+
+  &:active {
+    top: 1px;
+  }
+}
+
+.highlight,
+.well {
+  margin: 1rem 0;
+}
+
+pre,
+code,
+.well,
+.inline-well {
+  box-shadow: rgba(255,255,255,0.1) 0 1px 0, rgba(0,0,0,0.8) 0 1px 7px 0px inset;
+  background-color: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+
+pre,
+code,
+.well {
+  padding: 4px;
+}
+
+.lineno {
+  color: #444;
+  padding-right: 10px;
+}
+
+pre td {
+  padding: 4px;
+}
+
+code {
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+pre > code,
+pre pre {
+  padding: 0px;
+  overflow: auto;
+  background:none;
+  box-shadow: none;
+}
+
+hr {
+  border: none;
+  background: rgba(0,0,0,0.7);
+  height: 1px;
+  margin: 12px 0;
+  box-shadow: rgba(255,255,255,0.07) 0 1px 0;
+}
+
+.raised {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+}
+
+.meta {
+  i {
+    margin-right: 5px;
+  }
+}
+
+.chip {
+  border-radius: 6px;
+  padding: 0 6px;
+  height: auto;
+  line-height: inherit;
+  background: url("/assets/img/body.png");
+  box-shadow: 0 0 2px #000;
+
+}
+
+.icon-link {
+  i {
+    display: block;
+  }
+}
+
+.post-preview {
+  height: 100%;
+
+  h1 {
+    margin-top: 1rem;
+  }
+}
+
+.teaser {
+  border-radius: 3px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

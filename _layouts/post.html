@@ -1,0 +1,68 @@
+---
+layout: default
+---
+
+<header>
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <div class="teaser" style="height: calc(100% + 30px); margin-top: -30px; background-image:url({{page.teaser}})"></div>
+      </div>
+      <div class="col-6 my-4">
+        <div class="row meta">
+          <div class="col-12">
+            <h1>{{ page.title | escape }}</h1>
+          </div>
+          <div class="col-12 my-1">
+            <i class="fas fa-calendar-alt"></i> 
+            <time datetime="{{ page.date | date_to_xmlschema }}">
+              {%- assign date_format = "%b %-d, %Y" -%}
+              {{ page.date | date: date_format }}
+            </time>
+          </div>
+        {%- if page.author -%}
+          <div class="col-12 my-1">
+            <i class="fas fa-pen"></i> {{ page.author }}
+          </div>
+        {%- endif -%}
+
+        {% if page.tags %}
+          <div class="col-12 my-1">
+          {% for tag in page.tags %}
+            <a href="/tags/{{ tag }}" class="chip"><i class="fas fa-tag"></i>{{ tag }}</a>
+          {% endfor %}
+          </div>
+        {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="raised">
+  <div class="container">
+    <div class="row justify-content-around">
+      <div class="col-12">
+        {{ content }}
+      </div>
+      <div class="col-10">
+        {% include cosmo-hr.html %}
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="container">
+  <div class="row justify-content-between">
+    <div class="col-auto">
+      {% if page.next %}
+        <a style="display: flex;" href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}"><i style="line-height: 3rem; padding-right: 12px" class="fa fa-chevron-left"></i><div style="display: inline-block;"> Newer post: <br> {{page.next.title}}</div></a>
+      {% endif %}
+    </div>
+    <div class="col-auto text-right">
+      {% if page.previous %}
+        <a style="display: flex;" href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}"><div style="display: inline-block;">Older post: <br>  {{page.previous.title}} </div> <i style="line-height: 3rem; padding-left: 12px" class="fa fa-chevron-right"></i></a>
+      {% endif %}
+    </div>
+  </div>
+</div>

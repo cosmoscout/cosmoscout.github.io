@@ -1,0 +1,8 @@
+<div class="col-md-6 col-xs-12 my-4">
+  <div class="post-preview">
+    <div class="banner-right"><i class="fas fa-pen"></i>{{post.date | date_to_string}}</div>
+    <a class="teaser embed-responsive embed-responsive-16by9" style="background-image:url({{post.teaser}})" href="{{post.url}}"><div class="embed-responsive-item"></div></a>
+    <a href="{{post.url}}"><h1>{{post.title}}</h1></a>
+    {{post.excerpt}}
+  </div>
+</div>

@@ -1,0 +1,61 @@
+@font-face {
+  font-family: 'icon';
+  src:  url('/assets/fonts/icon.eot?63x0b6');
+  src:  url('/assets/fonts/icon.eot?63x0b6#iefix') format('embedded-opentype'),
+    url('/assets/fonts/icon.ttf?63x0b6') format('truetype'),
+    url('/assets/fonts/icon.woff?63x0b6') format('woff'),
+    url('/assets/fonts/icon.svg?63x0b6#icon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.cosmoscout-icon:before {
+  font-family: 'icon' !important;
+  @include font-size(1.3rem);
+  content: "\e900";
+}
+
+.strike {
+  display: block;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap; 
+  margin: 25px 0;
+}
+
+.strike > * {
+  position: relative;
+  display: inline-block;
+  // background-color: black;
+  padding: 5px;
+  color: rgba(0,0,0,0.5);
+  text-shadow: none;
+  // text-shadow: 0.5px 0.5px 0.5px rgba(255,255,255,0.2);
+  // -webkit-background-clip: text;
+  //    -moz-background-clip: text;
+  //         background-clip: text;
+  i::before {
+    font-size: 1.2rem !important;
+  }
+}
+
+.strike > *:before,
+.strike > *:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9999px;
+  height: 1px;
+  background: rgba(0,0,0,0.7);
+  box-shadow: rgba(255,255,255,0.07) 0 1px 0;
+}
+
+.strike > *:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+.strike > *:after {
+  left: 100%;
+  margin-left: 15px;
+}

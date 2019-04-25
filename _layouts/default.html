@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang='{{ page.lang | default: site.lang | default: "en" }}'>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    {%- seo -%}
+    <link rel='shortcut icon' href='/favicon.ico'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' integrity='sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr' crossorigin='anonymous'>
+    <link rel='stylesheet' href='{{ "/assets/css/main.css" | relative_url }}'>
+    <link rel='stylesheet' href='{{ "/assets/css/pygments.css" | relative_url }}'>
+    {%- feed_meta -%}
+  </head>
+
+  <body>
+
+    {% if page.url == "/" %}
+    <div class="fullpage-wrapper">
+      <div class="logo">
+        <div class="logo-text">
+          <div class="primary">CosmoScout VR</div>
+          <div class="secondary">Unveil the Universe</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-down">
+      <span></span><span></span><span></span>
+    </div>
+
+    <div class="container">
+      <div class="row justify-content-around">
+        <div class="col-10 text-center description">
+          » {% include small-logo.html %} is a virtual 3D-universe which lets you explore, analyse and present huge planetary datasets and large simulation data in real-time. «
+        </div>
+      </div>
+    </div>
+
+    {% endif %}
+    
+    <nav id="nav" class="alegreya">
+      <div class="container">
+        <div class="row justify-content-around">
+          <div class="col-auto text-center">
+              <a class="icon-link" href="/index.html#nav"><i class="fa cosmoscout-icon"></i> Home</a>
+          </div>
+          <div class="col-auto text-center">
+              <a class="icon-link" href="/features.html"><i class="far fa-star"></i> Features</a>
+          </div>
+          <div class="col-auto text-center">
+            <a class="icon-link" href="/gallery.html"><i class="fas fa-play-circle"></i> Gallery</a>
+          </div>
+          <div class="col-auto text-center">
+            <a class="icon-link" href="/tutorials.html"><i class="fas fa-graduation-cap"></i> Tutorials</a>
+          </div>
+          <div class="col-auto text-center">
+              <a class="icon-link" href="/download.html"><i class="far fa-arrow-alt-circle-down"></i> Download</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div id="background" class="raised">
+      {{ content }}
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <a href="https://github.com/{{ site.github }}" target="_blank"><i class="fab fa-github fa-2x"></i></a>
+            <a href="mailto:{{ site.email }}"><i class="fas fa-envelope fa-2x"></i></a>
+            <a href="{{site.url}}/feed.xml" target="_blank"><i class="fas fa-rss fa-2x"></i></a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-10 text-center">
+            &copy; {{ site.time | date: '%Y' }} Desgin &amp; Content by <a href="https://www.dlr.de/en">{{ site.author }} (DLR)</a> with help from <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> and <a href="https://getbootstrap.com" target="_blank">Bootstrap</a>. Proudly hosted on <a href="https://pages.github.com/">Github Pages</a> (<a href="https://github.com/cosmoscout/cosmoscout.github.io">repository</a>).
+            <br>
+            <a href="{{ site.path }}/imprint.html">Imprint</a> &amp; <a href="{{ site.path }}/privacy.html">Privacy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+      $(document).ready(function() {
+
+        // add code collapse buttons ---------------------------------------------------------------
+        $('figure.highlight').each(function() {
+          if ($(this).children().first().height() > 100) {
+            var inner_div = $(this).children().first();
+            inner_div.css({"height": inner_div.outerHeight() + "px"});
+            inner_div.addClass("collapsable");
+            inner_div.addClass("collapsed");
+            inner_div.prepend("<a class='code-expander'>Expand <i class='fas fa-caret-down'></i></a>");
+            inner_div.find('.code-expander').click(function() {
+              if (inner_div.hasClass("collapsed")) {
+                inner_div.removeClass("collapsed");
+                $(this).html("Collapse <i class='fas fa-caret-up'></i>");
+              } else {
+                inner_div.addClass("collapsed");
+                $(this).html("Expand <i class='fas fa-caret-down'></i>");
+              }
+            });
+          }
+        });
+      });
+    </script>
+
+  </body>
+
+</html>

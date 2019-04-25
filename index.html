@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<main class="raised">
+  <div class="container">
+    <div class="row">
+      {% for post in paginator.posts %}
+      {% include post-preview.html %}
+      {%- endfor -%}
+    </div>
+  </div>
+</main>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <ul class="pagination justify-content-center">
+      {% if paginator.previous_page %}
+         <li class="page-item"><a href="{{ paginator.previous_page_path }}"><i class="fas fa-chevron-left"></i></a></li>
+      {% else %}
+         <li class="page-item disabled"><a href="#"><i class="fas fa-chevron-left"></i></a></li>
+      {% endif %}
+      {% for page in (1..paginator.total_pages) %}
+        {% if page == paginator.page %}
+           <li class="page-item inline-well"><a href="#">{{ page }}</a></li>
+        {% elsif page == 1 %}
+           <li class="page-item"><a href="/">{{ page }}</a></li>
+        {% else %}
+           <li class="page-item"><a href="{{ site.paginate_path | replace: ':num', page }}">{{ page }}</a></li>
+        {% endif %}
+      {% endfor %}
+      {% if paginator.next_page %}
+         <li class="page-item"><a href="{{ paginator.next_page_path }}"><i class="fas fa-chevron-right"></i></a></li>
+      {% else %}
+         <li class="page-item disabled"><a href="#"><i class="fas fa-chevron-right"></i></a></li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>

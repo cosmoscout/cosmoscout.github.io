@@ -1,0 +1,15 @@
+.pagination {
+  margin: 0;
+  
+  li {
+    padding: 5px 10px;
+
+    &.disabled {
+      pointer-events: none;
+
+      a {
+        color: #555;
+      }
+    }
+  }
+}
