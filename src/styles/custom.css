@@ -32,3 +32,21 @@
     --sl-color-gray-7: #f5f6f8;
     --sl-color-black: #ffffff;
 }
+
+[data-has-hero] header {
+    border-bottom: 1px solid transparent;
+    background-color: transparent;
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+}
+
+:root[data-theme='light'] header {
+    background-color: #ffffffc5;
+}
+
+[data-has-hero] body {
+    background-image: url('../assets/bg.webp');
+    background-size: cover;
+    background-position: 50% 50%;
+
+}

@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import type { Props } from '@astrojs/starlight/props';
+import { LinkButton } from '@astrojs/starlight/components';
+
+import '@fontsource/alegreya-sans-sc';
+
+const { data } = Astro.props.entry;
+const { title = data.title, tagline, image, actions = [] } = data.hero || {};
+
+const imageAttrs = {
+  loading: 'eager' as const,
+  decoding: 'async' as const,
+  width: 400,
+  height: 400,
+  alt: image?.alt || '',
+};
+
+let darkImage: ImageMetadata | undefined;
+let lightImage: ImageMetadata | undefined;
+let rawHtml: string | undefined;
+if (image) {
+  if ('file' in image) {
+    darkImage = image.file;
+  } else if ('dark' in image) {
+    darkImage = image.dark;
+    lightImage = image.light;
+  } else {
+    rawHtml = image.html;
+  }
+}
+---
+
+<div class="hero">
+  <div class="logo">
+    <div class="image"></div>
+    <div class="upper">CosmoScout VR</div>
+    <div class="lower">Unveil the Universe</div>
+  </div>
+
+  {
+    actions.length > 0 && (
+      <div class="sl-flex actions">
+        {actions.map(
+          ({
+            attrs: { class: className, ...attrs } = {},
+            icon,
+            link: href,
+            text,
+            variant,
+          }) => (
+            <LinkButton
+              {href}
+              {variant}
+              icon={icon?.name}
+              class:list={[className]}
+              {...attrs}>
+              {text}
+              {icon?.html && <Fragment set:html={icon.html} />}
+            </LinkButton>
+          )
+        )}
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .hero {
+    color: #fff !important;
+    text-shadow:
+      0 0 3vw rgba(255, 255, 255, 0.5),
+      0 0 1vw rgba(255, 255, 255, 0.5);
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .actions {
+    margin-top: 5rem;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .logo {
+    font-family: 'Alegreya Sans SC', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-top: -30%;
+    margin-bottom: -30%;
+    background: url(../assets/planet.webp) center center;
+    background-size: contain;
+    pointer-events: none;
+  }
+
+  .upper {
+    font-size: calc(min(12vw, 8rem));
+    line-height: calc(min(12vw, 8rem));
+  }
+
+  .lower {
+    text-transform: uppercase;
+    font-size: calc(min(3vw, 2rem));
+    letter-spacing: calc(min(1vw, 0.66rem));
+    line-height: calc(min(6vw, 4rem));
+  }
+</style>
