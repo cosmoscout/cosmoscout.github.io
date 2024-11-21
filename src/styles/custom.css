@@ -41,7 +41,7 @@
 }
 
 :root[data-theme='light'] header {
-    background-color: #ffffffc5;
+    background-image: linear-gradient(to left rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0));
 }
 
 [data-has-hero] body {
@@ -49,4 +49,9 @@
     background-size: cover;
     background-position: 50% 50%;
 
+    /* Increase the brightness of the dim text in the footer of the landing page. */
+    --sl-color-gray-1: #aaa;
+    --sl-color-gray-2: #bbb;
+    --sl-color-gray-3: #888;
+    --sl-color-white: #fff;
 }
