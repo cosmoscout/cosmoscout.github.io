@@ -1,0 +1,19 @@
+---
+title: Architecture
+description: The architecture of CosmoScout VR.
+tableOfContents: false
+---
+
+The high-level architecture of CosmoScout VR is shown in the diagram below.
+More fine-grained information on the specific plugins is available in the documentation of each plugin.
+
+![CosmoScout VR Architecture](/src/assets/architecture.svg)
+
+As a user, you will get in touch with the `cosmoscout` executable and the individual plugin libraries.
+While the plugins may link to some special-purpose third-party libraries, all of them link against the CosmoScout VR core libraries.
+
+There are five core libraries: [`cs-core`](https://github.com/cosmoscout/cosmoscout-vr/tree/main/src/cs-core) contains all the application logic and links against [`cs-graphics`](https://github.com/cosmoscout/cosmoscout-vr/tree/main/src/cs-graphics), [`cs-gui`](https://github.com/cosmoscout/cosmoscout-vr/tree/main/src/cs-gui) and [`cs-scene`](https://github.com/cosmoscout/cosmoscout-vr/tree/main/src/cs-scene).
+All of them use some utility functionality from [`cs-utils`](https://github.com/cosmoscout/cosmoscout-vr/tree/main/src/cs-utils).
+
+CosmoScout VR uses [several third-party libraries](https://github.com/cosmoscout/cosmoscout-vr/blob/main/docs/dependencies.md) as a basis.
+The most important ones are [ViSTA](https://github.com/cosmoscout/vista) (which itself requires [OpenSG 1.8](https://github.com/cosmoscout/opensg-1.8)) and [SPICE](https://naif.jpl.nasa.gov/naif/toolkit.html).

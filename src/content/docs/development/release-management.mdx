@@ -1,0 +1,60 @@
+---
+title: Release Management
+description: How releases are managed in CosmoScout VR.
+tableOfContents: false
+---
+
+Releases are [published on GitHub](https://github.com/cosmoscout/cosmoscout-vr/releases).
+They are automatically created via [GitHub Actions](https://github.com/cosmoscout/cosmoscout-vr/actions) whenever a git tag is pushed.
+The progress of future releases is tracked with [GitHub Milestones](https://github.com/cosmoscout/cosmoscout-vr/milestones).
+Submitted [issues](https://github.com/cosmoscout/cosmoscout-vr/issues) will be assigned to a specific release (depending on their importance and complexity).
+
+[GitHub Projects](https://github.com/cosmoscout/cosmoscout-vr/projects) will be used for high-level planning of complex features, such as network synchronization or photorealistic HDR rendering.
+
+## Version Numbers
+
+Releases in the 1.x.x series will most likely have a lot of breaking API changes, as the software becomes more and more mature.
+However, starting from version 2.0.0, version numbers of CosmoScout VR will be assigned according to the [Semantic Versioning](https://semver.org/) scheme.
+This means, given a version number MAJOR.MINOR.PATCH, we will increment the:
+
+1. MAJOR version when we make incompatible API changes,
+2. MINOR version when we add functionality in a backwards compatible manner, and
+3. PATCH version when we make backwards compatible bug fixes.
+
+## Creating Releases
+
+When a new version of CosmoScout VR is released, the following steps are performed.
+
+```bash
+git checkout main
+git submodule update --init --recursive
+```
+
+First, the [changelog.md](https://github.com/cosmoscout/cosmoscout-vr/blob/main/docs/changelog.md) has to be updated.
+Based on the commits since the last release and the completed milestone, a list of changes is compiled.
+When this is done, the file has to be comitted:
+
+```bash
+git add docs/changelog.md
+git commit -m ":memo: Update changelog.md"
+```
+
+Then edit the [project(... VERSION ...)](https://github.com/cosmoscout/cosmoscout-vr/blob/main/CMakeLists.txt#L8) in the main `CMakeLists.txt` file according to the new version number.
+Afterwards, the change has to be comitted:
+
+```bash
+git add CMakeLists.txt
+git commit -m ":tada: Bump version number"
+```
+
+Then we create a new git tag and push this state to the `main` branch.
+
+```bash
+git push origin main
+git tag v<new version number>
+git push origin v<new version number>
+```
+
+The default downloads for tags on GitHub do not contain git submodules.
+Therefore, a separate archive containing all the submodule code is automatically created via [GitHub Actions](https://github.com/cosmoscout/cosmoscout-vr/actions) when a tag is pushed.
+Furthermore, binaries for Windows and Linux are automatically compiled with [GitHub Actions](https://github.com/cosmoscout/cosmoscout-vr/actions) and uploaded to the respective release.

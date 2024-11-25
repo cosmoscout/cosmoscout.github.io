@@ -22,12 +22,17 @@ export default defineConfig({
       },
       sidebar: [
         {
-          label: 'Getting Started',
-          autogenerate: { directory: 'getting-started' },
+          label: 'Usage Guide',
+          items: ['usage/intro', 'usage/citing', 'usage/migration-guide'],
         },
         {
-          label: 'Getting Involved',
-          autogenerate: { directory: 'getting-involved' },
+          label: 'Development',
+          items: [
+            'development/architecture',
+            'development/contribution-guide',
+            'development/continuous-integration',
+            'development/release-management',
+          ],
         },
         {
           label: 'Plugins',
