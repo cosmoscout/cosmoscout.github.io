@@ -40,6 +40,13 @@
     transform: translateY(0.15em);
 }
 
+/* We make long code blocks scrollable. */
+.expressive-code pre {
+    max-height: 500px !important;
+    overflow-y: auto !important;
+}
+
+
 [data-has-hero] header {
     border-bottom: 1px solid transparent;
     background-color: transparent;
