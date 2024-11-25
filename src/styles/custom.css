@@ -33,6 +33,13 @@
     --sl-color-black: #ffffff;
 }
 
+/* The astro icons are not displayed correctly as they get an display: block;
+   from somewhere. We add this class manually to make them inline again. */
+.inline-icon {
+    display: inline-block !important;
+    transform: translateY(0.15em);
+}
+
 [data-has-hero] header {
     border-bottom: 1px solid transparent;
     background-color: transparent;

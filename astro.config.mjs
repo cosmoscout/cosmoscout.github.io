@@ -1,13 +1,11 @@
 // @ts-check
 import starlight from '@astrojs/starlight';
-import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://cosmoscout.github.io',
   integrations: [
-    icon(),
     starlight({
       title: 'CosmoScout VR',
       logo: {
@@ -29,6 +27,8 @@ export default defineConfig({
           label: 'Development',
           items: [
             'development/architecture',
+            'development/coordinate-systems',
+            'development/building',
             'development/contribution-guide',
             'development/continuous-integration',
             'development/release-management',

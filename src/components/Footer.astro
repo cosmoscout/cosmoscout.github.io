@@ -1,18 +1,26 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
-import { Icon } from 'astro-icon/components';
+import { Icon } from '@astrojs/starlight/components';
 import Default from '@astrojs/starlight/components/Footer.astro';
 ---
 
 <Default {...Astro.props}><slot /></Default>
 
 <div class="kudos">
-  <Icon name="simple-icons:creativecommons" /> Content Licensed under CC-BY-4.0 by German Aerospace
-  Center (<a href="https://www.dlr.de/de/service/impressum">Imprint</a>)
+  Content Licensed under CC-BY-4.0 by German Aerospace Center (<a
+    href="https://www.dlr.de/de/service/impressum">Imprint</a
+  >)
   <br />
-  <a href="https://github.com/cosmoscout/cosmoscout.github.io">
-    <Icon name="simple-icons:github" /> Hosted on GitHub Pages
-  </a>
+  Build with <a href="https://docs.astro.build/en/getting-started/"
+    ><Icon name="astro" />
+    Astro</a
+  > using the <a href="https://starlight.astro.build/"
+    ><Icon name="starlight" />
+    Starlight</a
+  > theme.
+  <br />
+  Hosted on
+  <a href="https://github.com/kando-menu/kando-menu.github.io"> GitHub Pages. </a>
 </div>
 
 <style>
